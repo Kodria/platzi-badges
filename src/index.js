@@ -7,7 +7,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const name = 'Desarrollador'
+import Badge from "./components/Badge"
+
+// const name = 'Desarrollador'
 // Utilizando JSX
 
 // const element = <h1>Hola mundo</h1> 
@@ -20,15 +22,15 @@ const name = 'Desarrollador'
 // Utilizando createElement
 // const element = React.createElement('a', {href: 'http://platzi.com'}, 'Ir a platzi')
 // const element = React.createElement('h1', {}, `Hola soy ${name}`)
-const element = React.createElement(
-  'div',
-  {},
-  React.createElement('h1', {}, `Hola soy ${name}`),
-  React.createElement('p', {}, `soy un ingeniero`),
-)
+// const element = React.createElement(
+//   'div',
+//   {},
+//   React.createElement('h1', {}, `Hola soy ${name}`),
+//   React.createElement('p', {}, `soy un ingeniero`),
+// )
 
 
 const container = document.getElementById('app');
 
 // ReactDOM.render('_que_', '_donde_')
-ReactDOM.render(element, container)
+ReactDOM.render(<Badge />, container)
