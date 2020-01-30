@@ -7,7 +7,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Badge from "./components/Badge"
+import "bootstrap/dist/css/bootstrap.css"
+import "./global.css"
+
+import BadgeNew from "./pages/BadgeNew"
 
 // const name = 'Desarrollador'
 // Utilizando JSX
@@ -33,4 +36,15 @@ import Badge from "./components/Badge"
 const container = document.getElementById('app');
 
 // ReactDOM.render('_que_', '_donde_')
-ReactDOM.render(<Badge />, container)
+ReactDOM.render(
+  <BadgeNew />, container
+)
+// ReactDOM.render(
+//   <Badge 
+//     firstName="Nicolass" 
+//     lastName="Guerrero" 
+//     avatarUrl="https://es.gravatar.com/avatar?d=identicon"
+//     jobTitle="Desarrollador web sr" 
+//     twitter="nicolasguerrero"
+//   />, container
+// )
