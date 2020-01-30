@@ -10,7 +10,7 @@ import ReactDOM from 'react-dom'
 import "bootstrap/dist/css/bootstrap.css"
 import "./global.css"
 
-import BadgeNew from "./pages/BadgeNew"
+import Badges from "./pages/Badges"
 
 // const name = 'Desarrollador'
 // Utilizando JSX
@@ -37,7 +37,7 @@ const container = document.getElementById('app');
 
 // ReactDOM.render('_que_', '_donde_')
 ReactDOM.render(
-  <BadgeNew />, container
+  <Badges />, container
 )
 // ReactDOM.render(
 //   <Badge 
