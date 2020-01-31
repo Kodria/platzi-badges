@@ -4,41 +4,69 @@ import { Link } from "react-router-dom"
 import "./styles/Badges.css"
 import confLogo from "../images/badge-header.svg"
 import BadgesList from "../components/BadgesList"
+import PageLoading from "../components/PageLoading"
+import PageError from "../components/PageError"
+
+import api from "../api"
 
 class Badges extends React.Component {
 
-  state = {
-    data: [
-      {
-        id: 1,
-        firstName: "Demo",
-        lastName: "Uno",
-        avatarUrl: "https://es.gravatar.com/avatar?d=identicon",
-        jobTitle: "Job one",
-        twitter: "one",
-        email: "demouno@demo.com",
-      },
-      {
-        id: 2,
-        firstName: "Demo",
-        lastName: "Dos",
-        avatarUrl: "https://es.gravatar.com/avatar?d=identicon",
-        jobTitle: "Job two",
-        twitter: "two",
-        email: "demodos@demo.com",
-      },
-      {
-        id: 3,
-        firstName: "Demo",
-        lastName: "Tres",
-        avatarUrl: "https://es.gravatar.com/avatar?d=identicon",
-        jobTitle: "Job three",
-        twitter: "three",
-        email: "demotres@demo.com",
-      }
-    ]
+  
+
+  constructor(props) {
+    super(props)
+    console.log('1. Constructor')
+
+    this.state = {
+      loading: true,
+      error: null,
+      data: undefined
+    }
   }
+
+  componentDidMount() {
+    this.fetchData()
+  }
+
+  fetchData = async () => {
+    this.setState({loading: true, error: null})
+
+    try {
+      const data = await api.badges.list();
+      this.setState({loading: false, data: data})
+    } catch(err) {
+      this.setState({loading: false, error: err})
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('5. ComponentDidUpdate')
+    console.log({
+      prevProps,
+      prevState
+    })
+    console.log({
+      props: this.props,
+      state: this.state
+    })
+  }
+
+  componentWillUnmount() {
+    console.log('6. ComponentWillUnmount')
+    clearTimeout(this.timeoutId)
+  }
+
   render() {
+
+    if (this.state.loading === true) {
+      return <PageLoading />
+    }
+
+    if (this.state.error) {
+      return <PageError error={this.state.error} />
+    }
+
+    console.log('2/4. Render')
     return (
       <React.Fragment>
 

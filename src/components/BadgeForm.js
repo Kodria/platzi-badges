@@ -4,34 +4,16 @@ class BadgeForm extends React.Component {
 
   state = {};
 
-  // handleChange = e => {
-  //   // console.log({
-  //   //   name: e.target.name,
-  //   //   value: e.target.value
-  //   // })
-
-  //   this.setState({
-  //     [e.target.name]: e.target.value
-  //   })
-  // }
-
   handleClick = e => {
     console.log('button has click')
   }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    console.log('form was submit')
-    console.log(this.state)
-  }
-
 
   render() {
     return (
       <React.Fragment>
         <h1>New attendant</h1>
 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.props.onSubmit}>
           <div className="form-group">
             <label>First name</label>
             <input onChange={this.props.onChange} type="text" className="form-control" name="firstName" value={this.props.formValues.firstName}/>
@@ -61,6 +43,10 @@ class BadgeForm extends React.Component {
             onClick={this.handleClick} 
             className="btn btn-primary"
           >Save</button>
+
+          {this.props.error && (
+            <p className="text-danger">{this.props.error.message}</p>
+          )}
         </form>
       </React.Fragment>
     )
