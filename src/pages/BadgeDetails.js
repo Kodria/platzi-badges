@@ -5,7 +5,7 @@ import confLogo from "../images/platziconf-logo.svg"
 import "./styles/BadgeDetails.css"
 
 import Badge from "../components/Badge"
-import Modal from "../components/Modal"
+import DeleteBadgeModal from "../components/DeleteBadgeModal"
 
 function BadgeDetails (props) {
   return (
@@ -46,9 +46,11 @@ function BadgeDetails (props) {
                 <button onClick={props.onOpenModal} className="btn btn-danger">
                   Delete
                 </button>
-                <Modal isOpen={props.modalIsOpen} onClose={props.onCloseModal}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim exercitationem omnis quos non magnam, nulla nihil eligendi praesentium. Rerum facere animi quisquam eaque expedita inventore veniam, quo fuga pariatur eligendi!
-                </Modal>
+                <DeleteBadgeModal 
+                  isOpen={props.modalIsOpen} 
+                  onClose={props.onCloseModal} 
+                  onDeleteBadge={props.onDeleteBadge}
+                />
               </div>
             </div>
           </div>
