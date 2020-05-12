@@ -3,20 +3,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 
 module.exports = {
+  mode: 'development',
   entry: {
     app: path.resolve(__dirname,'src/index.js')
   },
-  mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
-    publicPath: 'http://localhost:9000/',
+    publicPath: 'http://0.0.0.0:8080/',
     chunkFilename: 'js/[id].[chunkhash].js'
+  },
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
-    open: true,
-    port: 9000,
+    host: '0.0.0.0',
     hot: true
   },
   module: {
