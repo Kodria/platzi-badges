@@ -13,14 +13,19 @@ module.exports = {
     publicPath: 'http://0.0.0.0:8080/',
     chunkFilename: 'js/[id].[chunkhash].js'
   },
-  watchOptions: {
-    aggregateTimeout: 300,
-    poll: 1000
-  },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     host: '0.0.0.0',
-    hot: true
+    hot: true,
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000
+    },
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    }
   },
   module: {
     rules: [
