@@ -8,6 +8,7 @@ Herramientas utilizadas:
 - Webpack
 - Babel
 - Docker
+- JsonServer
 
 ## Instalación, configuración y lanzamiento
 
