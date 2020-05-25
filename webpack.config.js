@@ -7,6 +7,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TercerJSPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
+// Definiendo variables de entorno
+const envKeys = Object.keys(process.env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(process.env[next]);
+  return prev;
+}, {});
+
 module.exports = {
   entry: {
     app: path.resolve(__dirname,'src/index.js')
@@ -14,7 +20,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].[hash].js',
-    publicPath: 'http://0.0.0.0:3001/',
+    publicPath: '/',
     chunkFilename: 'js/[id].[chunkhash].js'
   },
   optimization: {
@@ -66,8 +72,9 @@ module.exports = {
     new AddAssetHtmlPlugin({
       filepath: path.resolve(__dirname, 'dist/js/*.dll.js'),
       outputPath: 'js',
-      publicPath: 'http://0.0.0.0:3001/js',
+      publicPath: '/js',
     }),
+    new webpack.DefinePlugin(envKeys),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/app.*']
     })

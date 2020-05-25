@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  server:
+    image: platzi-badge:prod
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile.prod
+    env_file: .env
+    ports:
+      - ${SERVER_PORT}:3001

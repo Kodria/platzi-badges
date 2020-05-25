@@ -9,7 +9,7 @@
     "build": "webpack --config ./webpack.config --mode production",
     "build:dll": "webpack --config ./webpack.dll.config --mode production",
     "dev": "npm-run-all -p build:dev server",
-    "prod": "npm-run-all -p build:dll build"
+    "prod": "npm-run-all -p build:dll build server"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",

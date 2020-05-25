@@ -1,14 +1,15 @@
 version: '3.4'
 
 services:
-  platzi-badge:
-    image: platzi-badge
-    build: .
-    environment:
-      NODE_ENV: development
+  server:
+    image: platzi-badge:dev
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile
+    env_file: .env
     ports:
-      - 8080:8080
-      - 3001:3001
+      - ${PORT}:${PORT}
+      - ${SERVER_PORT}:3001
     volumes:
       - .:/usr/src/app/
       - /usr/src/app/node_modules

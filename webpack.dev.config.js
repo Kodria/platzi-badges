@@ -2,6 +2,14 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 
+const server_port = process.env.PORT || 8080;
+
+// Definiendo variables de entorno
+const envKeys = Object.keys(process.env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(process.env[next]);
+  return prev;
+}, {});
+
 module.exports = {
   mode: 'development',
   entry: {
@@ -10,12 +18,13 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
-    publicPath: 'http://0.0.0.0:8080/',
+    publicPath: `http://0.0.0.0:${server_port}/`,
     chunkFilename: 'js/[id].[chunkhash].js'
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     host: '0.0.0.0',
+    port: server_port,
     hot: true,
     watchOptions: {
       aggregateTimeout: 300,
@@ -56,6 +65,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html')
-    })
+    }),
+    new webpack.DefinePlugin(envKeys)
   ],
 }
