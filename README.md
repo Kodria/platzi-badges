@@ -2,7 +2,7 @@
 
 Sistema de inscripción a conferencia
 
-Herramientas utilizadas:
+## Herramientas utilizadas
 
 - ReactJS
 - Webpack
