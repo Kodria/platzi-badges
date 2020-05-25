@@ -1,5 +1,7 @@
 # Platzi Badges
 
+Sistema de inscripción a conferencia
+
 Herramientas utilizadas:
 
 - ReactJS
