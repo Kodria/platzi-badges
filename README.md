@@ -2,6 +2,8 @@
 
 Sistema de inscripción a conferencia
 
+#### Nota: Proyecto estrictamente educativo
+
 ## Herramientas utilizadas
 
 - ReactJS
