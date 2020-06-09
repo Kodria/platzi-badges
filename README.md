@@ -31,6 +31,7 @@ touch .env
 - Para el modo de desarrollo es importante tener configuradas las variables de entorno 
   - PORT
   - SERVER_PORT
+  - API
 
 - Inicializar el contenedor
 ```
@@ -55,6 +56,7 @@ docker-compose down
 
 - Para el modo de desarrollo es importante tener configuradas las variables de entorno 
   - SERVER_PORT
+  - API
 
 - Inicializar el contenedor
 ```
